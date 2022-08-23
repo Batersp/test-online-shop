@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Product.module.css'
+import style from './Product.module.css';
 
 type ProductPropsType = {
     image: string
@@ -12,13 +12,13 @@ export const Product: React.FC<ProductPropsType> = ({price,description,name,imag
     return (
         <div className={style.main}>
             <div className={style.imageContainer}>
-                <img className={style.image} src="" alt=""/>
+                <img className={style.image} src={image} alt=""/>
             </div>
-            <div className={style.nameProduct}>Name Product</div>
-            <div className={style.description}>Description Product</div>
+            <div className={style.nameProduct}>{name}</div>
+            <div className={style.description}>{description}</div>
             <div className={style.buy}>
                 <button>BUY</button>
-                <span>Price</span>
+                <span>{price}</span>
             </div>
 
         </div>
