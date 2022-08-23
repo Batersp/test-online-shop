@@ -2,7 +2,7 @@ import React from 'react';
 import style from './ProductInBasket.module.css'
 import {ProductType} from "../../../Products/products-reducer";
 import {useAppDispatch} from "../../../../common/hooks/hooks";
-import {addProductInBasket, removeProductInBasket} from "../../index";
+import {addProduct, removeProduct} from "../../../../common/functions";
 
 type ProductInBasketPropsType = {
     product: ProductType
@@ -15,11 +15,11 @@ export const ProductInBasket = (props: ProductInBasketPropsType) => {
     const dispatch = useAppDispatch()
 
     const onPlusClickHandler = () => {
-        dispatch(addProductInBasket({value:props.product}))
+            addProduct(props.product, name, dispatch)
     }
 
     const onMinusClickHandler = () => {
-        dispatch(removeProductInBasket({value:props.product}))
+        removeProduct(props.product, name, dispatch)
     }
 
     return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './Product.module.css';
 import {useAppDispatch} from "../../common/hooks/hooks";
-import {addProductInBasket} from "../Basket";
 import {ProductType} from "../Products/products-reducer";
+import {addProduct} from "../../common/functions";
 
 type ProductPropsType = {
     product: ProductType
@@ -15,16 +15,7 @@ export const Product = (props: ProductPropsType) => {
     const dispatch = useAppDispatch()
 
     const onClickHandler = () => {
-        dispatch(addProductInBasket({value: props.product}))
-        if (localStorage.getItem(name)) {
-            // @ts-ignore
-            const a = parseInt(localStorage.getItem(JSON.stringify(props.product))) + 1
-            localStorage.setItem(JSON.stringify(props.product), JSON.stringify(a))
-        } else {
-            localStorage.setItem(name, JSON.stringify(props.product))
-            localStorage.setItem(JSON.stringify(props.product), JSON.stringify(1))
-        }
-
+        addProduct(props.product, name, dispatch)
     }
 
     return (

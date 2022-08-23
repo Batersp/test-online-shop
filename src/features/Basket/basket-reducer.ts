@@ -12,12 +12,17 @@ export const slice = createSlice({
     initialState: initialState,
     reducers: {
         addProductInBasket(state, action: PayloadAction<{ value: Product }>) {
-            state.products.unshift(action.payload.value)
+            state.products.push(action.payload.value)
             state.totalPrice = state.totalPrice += action.payload.value.price
         },
         removeProductInBasket(state, action: PayloadAction<{ value: Product }>) {
-            const index = state.products.findIndex(el => el.id === action.payload.value.id)
-            state.products.splice(index,1)
+        let ind: Array<number> = []
+            state.products.forEach((el,index) => {
+                if(el.id === action.payload.value.id) {
+                    ind.push(index)
+                }
+            })
+            state.products.splice(ind.sort().reverse()[0],1)
             state.totalPrice = state.totalPrice -= action.payload.value.price
         },
     },
