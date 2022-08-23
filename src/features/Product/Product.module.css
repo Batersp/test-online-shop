@@ -1,0 +1,27 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    width: 400px;
+    background-color: #282c34;
+    margin: 50px;
+}
+
+.imageContainer {
+    height: 60%;
+    width: 100%;
+    background-color: #61dafb;
+}
+
+.nameProduct {
+    background-color: gold;
+}
+
+.description {
+    background-color: lightpink;
+}
+
+.buy {
+    background-color: gold;
+}
