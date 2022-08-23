@@ -1,13 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {Header} from "../features/Header/Header";
-import {Products} from "../features/Products/Products";
+import {RoutesPage} from "../common/components/RoutesPage/RoutesPage";
+import {useAppDispatch} from "../common/hooks/hooks";
+import {addProductInBasket} from "../features/Basket";
 
 function App() {
+
+    const dispatch = useAppDispatch()
+
+
+
+    console.log('llllll')
+
+useEffect(() => {
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        // @ts-ignore
+        dispatch(addProductInBasket({value: JSON.parse(localStorage.getItem(key))}))
+    }
+},[])
+
     return (
         <div className="App">
             <Header/>
-            <Products/>
+            <RoutesPage/>
         </div>
     );
 }

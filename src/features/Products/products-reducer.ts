@@ -16,8 +16,8 @@ export const slice = createSlice({
     name: 'products',
     initialState: initialState,
     reducers: {
-        createNewProduct(state, action: PayloadAction<{ value: Product }>) {
-            state.products.push(action.payload.value)
+        createNewProduct(state, action: PayloadAction<{ value: ProductType }>) {
+            state.products.unshift(action.payload.value)
         }
     },
 })
@@ -25,10 +25,10 @@ export const slice = createSlice({
 
 
 export type InitialStateType = {
-   products: Array<Product>
+   products: Array<ProductType>
 }
 
-type Product = {
+export type ProductType = {
     id: number
     name: string
     description: string

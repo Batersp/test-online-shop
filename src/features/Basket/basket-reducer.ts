@@ -2,7 +2,8 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 
 const initialState: InitialStateType = {
-    products: []
+    products: [],
+    totalAmount: 0
 }
 
 
@@ -11,8 +12,9 @@ export const slice = createSlice({
     initialState: initialState,
     reducers: {
         addProductInBasket(state, action: PayloadAction<{ value: Product }>) {
-            state.products.push(action.payload.value)
-        }
+            state.products.unshift(action.payload.value)
+            state.totalAmount = state.totalAmount += action.payload.value.price
+        },
     },
 })
 
@@ -20,6 +22,7 @@ export const slice = createSlice({
 
 export type InitialStateType = {
     products: Array<Product>
+    totalAmount: number
 }
 
 type Product = {

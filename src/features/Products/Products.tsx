@@ -11,7 +11,7 @@ export const Products = () => {
 
     return (
         <div className={style.main}>
-            {Products.map(el => <Product key={el.id} name={el.name} image={el.image} description={el.description} price={el.price}/>)}
+            {Products.map(el => <Product key={el.id} product={el}/>)}
 
 
         </div>

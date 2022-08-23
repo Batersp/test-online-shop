@@ -4,10 +4,12 @@ import thunkMiddleware from 'redux-thunk'
 // мы задаём структуру нашего единственного объекта-состояния
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {productsReducer} from "../features/Products";
+import {basketReducer} from "../features/Basket";
 
 
 export const rootReducer = combineReducers({
     products: productsReducer,
+    basket: basketReducer
 })
 // непосредственно создаём store
 //export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
