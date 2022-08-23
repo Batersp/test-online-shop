@@ -1,9 +1,10 @@
 import {slice} from "./basket-reducer";
 
 const basketReducer = slice.reducer
-const {addProductInBasket} = slice.actions
+const {addProductInBasket, removeProductInBasket} = slice.actions
 
 export {
     basketReducer,
-    addProductInBasket
+    addProductInBasket,
+    removeProductInBasket
 }

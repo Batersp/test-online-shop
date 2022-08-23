@@ -10,16 +10,23 @@ function App() {
     const dispatch = useAppDispatch()
 
 
-
     console.log('llllll')
 
-useEffect(() => {
-    for (let i = 0; i < localStorage.length; i++) {
-        let key = localStorage.key(i);
-        // @ts-ignore
-        dispatch(addProductInBasket({value: JSON.parse(localStorage.getItem(key))}))
-    }
-},[])
+    useEffect(() => {
+        for (let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+            // @ts-ignore
+            if (typeof (JSON.parse(localStorage.getItem(key))) !== "number") {
+                // @ts-ignore
+                let kol = parseInt(localStorage.getItem(localStorage.getItem(key)))
+                for(let i = 0; i < kol; i++) {
+                    // @ts-ignore
+                    dispatch(addProductInBasket({value: JSON.parse(localStorage.getItem(key))}))
+                }
+
+            }
+        }
+    }, [])
 
     return (
         <div className="App">

@@ -16,7 +16,15 @@ export const Product = (props: ProductPropsType) => {
 
     const onClickHandler = () => {
         dispatch(addProductInBasket({value: props.product}))
-        localStorage.setItem(name, JSON.stringify(props.product))
+        if (localStorage.getItem(name)) {
+            // @ts-ignore
+            const a = parseInt(localStorage.getItem(JSON.stringify(props.product))) + 1
+            localStorage.setItem(JSON.stringify(props.product), JSON.stringify(a))
+        } else {
+            localStorage.setItem(name, JSON.stringify(props.product))
+            localStorage.setItem(JSON.stringify(props.product), JSON.stringify(1))
+        }
+
     }
 
     return (

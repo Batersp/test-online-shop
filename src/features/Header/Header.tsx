@@ -8,7 +8,7 @@ import {getTotalAmount} from "../Basket/selectors";
 import style from './Header.module.css'
 
 export const Header = () => {
-    const totalAmount = useAppSelector(getTotalAmount)
+    const totalPrice = useAppSelector(getTotalAmount)
 
     return (
         <div className={style.main}>
@@ -17,11 +17,14 @@ export const Header = () => {
                     <Typography style={{margin: '0 auto'}} variant="h2" color="inherit" component="div">
                         Products
                     </Typography>
+                    <NavLink to={path.PRODUCTS}>
+                       <div>main</div>
+                    </NavLink>
                     <NavLink to={path.BASKET}>
                         <div className={style.basket}>
                             <img src={basketIcon} alt=""/>
-                            {totalAmount
-                                ? <div className={style.price}>{totalAmount}$</div>
+                            {totalPrice
+                                ? <div className={style.price}>{totalPrice}$</div>
                                 : null
                             }
 

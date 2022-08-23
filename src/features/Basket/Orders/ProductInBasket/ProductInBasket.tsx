@@ -1,17 +1,26 @@
 import React from 'react';
 import style from './ProductInBasket.module.css'
 import {ProductType} from "../../../Products/products-reducer";
-import {useAppSelector} from "../../../../common/hooks/hooks";
-import {getTotalAmount} from "../../selectors";
+import {useAppDispatch} from "../../../../common/hooks/hooks";
+import {addProductInBasket, removeProductInBasket} from "../../index";
 
 type ProductInBasketPropsType = {
     product: ProductType
+    numberOfProduct: number
 }
 
 
 export const ProductInBasket = (props: ProductInBasketPropsType) => {
     const {image, price, name, description} = props.product
+    const dispatch = useAppDispatch()
 
+    const onPlusClickHandler = () => {
+        dispatch(addProductInBasket({value:props.product}))
+    }
+
+    const onMinusClickHandler = () => {
+        dispatch(removeProductInBasket({value:props.product}))
+    }
 
     return (
         <div className={style.main}>
@@ -26,9 +35,9 @@ export const ProductInBasket = (props: ProductInBasketPropsType) => {
             </div>
             </div>
             <div className={style.numberOfGoods}>
-                <button>-</button>
-                число
-                <button>+</button>
+                <button onClick={onMinusClickHandler}>-</button>
+                {props.numberOfProduct}
+                <button onClick={onPlusClickHandler}>+</button>
 
             </div>
         </div>

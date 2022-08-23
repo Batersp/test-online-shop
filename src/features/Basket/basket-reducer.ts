@@ -3,7 +3,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 const initialState: InitialStateType = {
     products: [],
-    totalAmount: 0
+    totalPrice: 0
 }
 
 
@@ -13,7 +13,12 @@ export const slice = createSlice({
     reducers: {
         addProductInBasket(state, action: PayloadAction<{ value: Product }>) {
             state.products.unshift(action.payload.value)
-            state.totalAmount = state.totalAmount += action.payload.value.price
+            state.totalPrice = state.totalPrice += action.payload.value.price
+        },
+        removeProductInBasket(state, action: PayloadAction<{ value: Product }>) {
+            const index = state.products.findIndex(el => el.id === action.payload.value.id)
+            state.products.splice(index,1)
+            state.totalPrice = state.totalPrice -= action.payload.value.price
         },
     },
 })
@@ -22,7 +27,7 @@ export const slice = createSlice({
 
 export type InitialStateType = {
     products: Array<Product>
-    totalAmount: number
+    totalPrice: number
 }
 
 type Product = {
