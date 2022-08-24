@@ -25,6 +25,11 @@ export const slice = createSlice({
             state.products.splice(ind.sort().reverse()[0],1)
             state.totalPrice = state.totalPrice -= action.payload.value.price
         },
+        clearBasket(state) {
+            state.products = []
+            state.totalPrice = 0
+        }
+
     },
 })
 

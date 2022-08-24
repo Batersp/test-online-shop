@@ -13,8 +13,14 @@ a {
     text-decoration: none;
 }
 
+.goToMain {
+    font-size: 30px;
+    color: gold;
+}
+
 .price {
   display: flex;
     align-items: center;
     font-size: 30px;
+    color: gold;
 }

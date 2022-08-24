@@ -14,12 +14,12 @@ export const Header = () => {
         <div className={style.main}>
             <AppBar color={"secondary"} position="static">
                 <Toolbar variant="dense">
-                    <Typography style={{margin: '0 auto'}} variant="h2" color="inherit" component="div">
-                        Products
-                    </Typography>
                     <NavLink to={path.PRODUCTS}>
-                       <div>main</div>
+                        <div className={style.goToMain}>main</div>
                     </NavLink>
+                    <Typography style={{margin: '0 auto'}} variant="h2" color="inherit" component="div">
+                        Shop Online
+                    </Typography>
                     <NavLink to={path.BASKET}>
                         <div className={style.basket}>
                             <img src={basketIcon} alt=""/>

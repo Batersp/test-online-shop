@@ -1,8 +1,7 @@
 .main {
-    padding-top: 100px;
-}
 
-.content {
+    font-size: 100px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }

@@ -3,15 +3,17 @@
     flex-direction: column;
     justify-content: space-between;
     height: 400px;
-    width: 400px;
-    background-color: #282c34;
+    width: 350px;
+    background-color: rgba(234,217,238,0.89);
     margin: 50px;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
 }
 
 .imageContainer {
     height: 60%;
     width: 100%;
-    background-color: #61dafb;
 }
 
 .image {
@@ -21,13 +23,18 @@
 }
 
 .nameProduct {
-    background-color: gold;
+    font-weight: bold;
 }
 
 .description {
-    background-color: lightpink;
+    font-size: 20px;
 }
 
 .buy {
-    background-color: gold;
+    margin-top: 10px;
+
+}
+
+.btn {
+
 }

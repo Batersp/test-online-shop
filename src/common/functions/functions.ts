@@ -1,5 +1,5 @@
-import {ProductType} from "../features/Products/products-reducer";
-import {addProductInBasket, removeProductInBasket} from "../features/Basket";
+import {ProductType} from "../../features/Products/products-reducer";
+import {addProductInBasket, removeProductInBasket} from "../../features/Basket";
 
 
 export const addProduct = (product: ProductType, name: string, dispatch: any) => {
