@@ -6,19 +6,24 @@ export const addProduct = (product: ProductType, name: string, dispatch: any) =>
     dispatch(addProductInBasket({value: product}))
     if (localStorage.getItem(name)) {
         // @ts-ignore
-        const amountProduct = parseInt(localStorage.getItem(JSON.stringify(product))) + 1
-        localStorage.setItem(JSON.stringify(product), JSON.stringify(amountProduct))
+        localStorage.setItem(name, JSON.stringify({...product, count: product.count + 1}))
     } else {
         localStorage.setItem(name, JSON.stringify(product))
-        localStorage.setItem(JSON.stringify(product), JSON.stringify(1))
     }
 
 }
 
 export const removeProduct = (product: ProductType, name: string, dispatch: any) => {
     dispatch(removeProductInBasket({value: product}))
-        // @ts-ignore
-        const amountProduct = parseInt(localStorage.getItem(JSON.stringify(product))) -1
-        localStorage.setItem(JSON.stringify(product), JSON.stringify(amountProduct))
+    // @ts-ignore
+    const element = JSON.parse(localStorage.getItem(name))
+    if (element.count === 1) {
+        localStorage.removeItem(name)
+    } else {
+        localStorage.setItem(name, JSON.stringify({...product, count: product.count - 1}))
+    }
+}
 
+export const cleanLocalStorage = () => {
+    localStorage.clear()
 }

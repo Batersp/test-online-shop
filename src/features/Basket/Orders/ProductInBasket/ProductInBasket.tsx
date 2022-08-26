@@ -7,12 +7,11 @@ import {Button} from "@mui/material";
 
 type ProductInBasketPropsType = {
     product: ProductType
-    numberOfProduct: number
 }
 
 
 export const ProductInBasket = (props: ProductInBasketPropsType) => {
-    const {image, price, name, description} = props.product
+    const {image, price, name, description, count} = props.product
     const dispatch = useAppDispatch()
 
     const onPlusClickHandler = () => {
@@ -39,7 +38,7 @@ export const ProductInBasket = (props: ProductInBasketPropsType) => {
                 <Button className={style.btn} onClick={onMinusClickHandler} variant="contained" color="error">
                     -
                 </Button>
-                {props.numberOfProduct}
+                {count}
                 <Button className={style.btn} onClick={onPlusClickHandler} variant="contained" color="success">
                     +
                 </Button>

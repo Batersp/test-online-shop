@@ -5,6 +5,7 @@ import {ProductInBasket} from "./ProductInBasket/ProductInBasket";
 import style from './Orders.module.css'
 import {clearBasket} from "../index";
 import {Button} from "@mui/material";
+import {cleanLocalStorage} from "../../../common/functions/functions";
 
 
 export const Orders = () => {
@@ -12,34 +13,20 @@ export const Orders = () => {
     const dispatch = useAppDispatch()
 
     const cleanBasketHandler = () => {
+        cleanLocalStorage()
         dispatch(clearBasket())
     }
 
     const totalAmount = useAppSelector(getTotalAmount)
 
     const products = useAppSelector(getProductsInBasket)
-    let obj = {}
-    for (let i = 0; i < products.length; i++) {
-        // @ts-ignore
-        if (obj[JSON.stringify(products[i])]) {
-            // @ts-ignore
-            obj[JSON.stringify(products[i])] += 1
-        } else {
-            // @ts-ignore
-            obj[JSON.stringify(products[i])] = 1
-        }
-    }
-
-    let productsForBasket = Object.keys(obj).map(el => JSON.parse(el))
-
 
     return (
         <div className={style.main}>
             {
                 products.length
                     // @ts-ignore
-                    ? productsForBasket.map(el => <ProductInBasket numberOfProduct={obj[JSON.stringify(el)]} key={el.id}
-                                                                   product={el}/>)
+                    ? products.map(el => <ProductInBasket key={el.id} product={el}/>)
                     : <div className={style.text}>Ваша корзина пуста</div>
             }
             {

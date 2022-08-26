@@ -16,6 +16,7 @@ export const Product = (props: ProductPropsType) => {
 
     const dispatch = useAppDispatch()
 
+
     const onClickHandler = () => {
         addProduct(props.product, name, dispatch)
         setInBasket(true)
